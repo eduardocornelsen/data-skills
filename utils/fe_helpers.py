@@ -1,4 +1,11 @@
 # Databricks Feature Engineering helpers — import via: %run ./utils/fe_helpers
+import subprocess, sys, importlib
+subprocess.check_call(
+    [sys.executable, "-m", "pip", "install", "-q", "typing_extensions>=4.6.0", "seaborn", "scipy", "scikit-learn"],
+    stdout=subprocess.DEVNULL,
+)
+import typing_extensions; importlib.reload(typing_extensions)
+
 import math
 import json
 import re
@@ -74,7 +81,7 @@ def add_outlier_flag(df: DataFrame, col: str, bounds: dict) -> DataFrame:
     safe = col.replace(" ", "_").lower()
     return df.withColumn(
         f"is_outlier_{safe}",
-        (F.col(col) < bounds["lower"]) | (F.col(col) > bounds["upper"]),
+        ((F.col(col) < bounds["lower"]) | (F.col(col) > bounds["upper"])).cast("int"),
     )
 
 

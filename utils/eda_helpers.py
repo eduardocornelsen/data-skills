@@ -1,4 +1,11 @@
 # Databricks EDA helper functions — import via: %run ./utils/eda_helpers
+import subprocess, sys, importlib
+subprocess.check_call(
+    [sys.executable, "-m", "pip", "install", "-q", "typing_extensions>=4.6.0", "seaborn", "scipy"],
+    stdout=subprocess.DEVNULL,
+)
+import typing_extensions; importlib.reload(typing_extensions)
+
 from pyspark.sql import DataFrame
 import pyspark.sql.functions as F
 from pyspark.sql.types import TimestampType, NumericType, StringType
