@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/duds0/agents/learn/claude-code-data-science/**)",
+      "Read(//home/duds0/agents/learn/**)",
+      "Bash(git -C /home/duds0/agents/learn/claude-code-data-science status)",
+      "Bash(git -C /home/duds0/agents/learn/claude-code-data-science/claude-code-data-science status)",
+      "Bash(mv /home/duds0/agents/learn/claude-code-data-science/claude-code-data-science/.git /home/duds0/agents/learn/claude-code-data-science/)",
+      "Bash(mv /home/duds0/agents/learn/claude-code-data-science/claude-code-data-science/.claude /home/duds0/agents/learn/claude-code-data-science/)",
+      "Bash(rmdir /home/duds0/agents/learn/claude-code-data-science/claude-code-data-science/)",
+      "Bash(grep -v \"^venv$\")",
+      "Bash(grep -v \"^\\\\.git$\")",
+      "Bash(python *)",
+      "Bash(python3 *)"
+    ]
+  }
+}
