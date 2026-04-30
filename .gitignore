@@ -28,3 +28,6 @@ mlflow.db-journal
 
 # OS
 Thumbs.db
+NEXT_STEP.md
+.gitignore
+make_transparent.py

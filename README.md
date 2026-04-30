@@ -1,18 +1,4 @@
-██████╗  █████╗ ████████╗ █████╗           
-██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗          
-██║  ██║███████║   ██║   ███████║          
-██║  ██║██╔══██║   ██║   ██╔══██║          
-██████╔╝██║  ██║   ██║   ██║  ██║          
-╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝          
-                                           
-███████╗██╗  ██╗██╗██╗     ██╗     ███████╗
-██╔════╝██║ ██╔╝██║██║     ██║     ██╔════╝
-███████╗█████╔╝ ██║██║     ██║     ███████╗
-╚════██║██╔═██╗ ██║██║     ██║     ╚════██║
-███████║██║  ██╗██║███████╗███████╗███████║
-╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝
-
-# data-skills
+![data-skills](assets/logo_final.png)
 
 Composable Claude Code skills that turn an agent into a senior data science team. Plug-and-play for any project — add as a git submodule and Claude can invoke the playbooks and personas directly.
 
