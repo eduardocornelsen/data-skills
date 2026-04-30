@@ -91,11 +91,12 @@ Step-by-step instructions that Claude follows to produce notebooks, code, and ar
 | Playbook | What it does |
 |---|---|
 | `02_EDA.md` | Exploratory data analysis — profiling, distributions, correlations, hypothesis register |
+| `03_HYPOTHESIS_TESTING.md` | Rigorous statistical tests — assumption checks, effect sizes, power analysis, multiple-testing correction |
 | `04_FEATURE_ENGINEERING.md` | Transform raw data into model-ready features — encoding, scaling, temporal features, text features |
 | `05_MODEL_TRAINING.md` | Train and compare candidate models — hyperparameter tuning, MLflow tracking, champion selection |
 | `07_INFERENCING.md` | Score new data in production — schema validation, feature pipelines, drift monitoring |
 
-> More playbooks are planned: problem framing, data contracts, hypothesis testing, model evaluation, monitoring, and experimentation. See [PLAN.md](./PLAN.md).
+> More playbooks are planned: problem framing, data contracts, model evaluation, monitoring, and experimentation. See [PLAN.md](./PLAN.md).
 
 ### Personas — *Who* does the work
 
@@ -132,6 +133,7 @@ data-skills/
 │   └── skills/                        # Claude Code skill definitions (invocable via /slash commands)
 │       ├── playbooks/
 │       │   ├── eda/SKILL.md                    # /eda — run exploratory data analysis
+│       │   ├── hypothesis-testing/SKILL.md    # /hypothesis-testing — statistical tests
 │       │   ├── feature-engineering/SKILL.md    # /feature-engineering — build features
 │       │   ├── model-training/SKILL.md         # /model-training — train models
 │       │   ├── inferencing/SKILL.md            # /inferencing — score new data
@@ -148,6 +150,7 @@ data-skills/
 │
 ├── playbooks/                         # Canonical playbook content (skills reference these)
 │   ├── 02_EDA.md                      #   Exploratory data analysis
+│   ├── 03_HYPOTHESIS_TESTING.md       #   Statistical hypothesis testing
 │   ├── 04_FEATURE_ENGINEERING.md      #   Feature engineering
 │   ├── 05_MODEL_TRAINING.md           #   Model training & selection
 │   └── 07_INFERENCING.md              #   Batch inference & drift detection
@@ -310,7 +313,27 @@ The target variable is "churned".
 
 ---
 
-### Phase 2: Feature Engineering
+### Phase 2: Hypothesis Testing
+
+**What it does:** Takes the hypotheses from EDA and tests them rigorously — assumption checks, effect sizes, power analysis, confidence intervals, and multiple-testing correction.
+
+**Prompt:**
+```
+/hypothesis-testing
+
+Use the hypothesis register from the EDA notebook.
+The target variable is "churned".
+Focus on the high-priority hypotheses first.
+```
+
+**What Claude produces:**
+- `hypothesis_testing.ipynb` — complete testing notebook with diagnostics
+- `utils/hypothesis_helpers.py` — reusable functions for assumption checks and effect sizes
+- Updated hypothesis register with verdicts, effect sizes, and practical significance
+
+---
+
+### Phase 3: Feature Engineering
 
 **What it does:** Transforms raw columns into model-ready features — encoding, scaling, temporal features, text features, interaction terms.
 
@@ -318,7 +341,7 @@ The target variable is "churned".
 ```
 /feature-engineering
 
-Use the findings from the EDA notebook.
+Use the findings from the EDA and hypothesis testing notebooks.
 The target variable is "churned".
 Create train/validation/test splits (70/15/15).
 ```
@@ -330,7 +353,7 @@ Create train/validation/test splits (70/15/15).
 
 ---
 
-### Phase 3: Model Training
+### Phase 4: Model Training
 
 **What it does:** Trains multiple candidate models, tunes hyperparameters, logs everything to MLflow, and selects a champion.
 
@@ -350,7 +373,7 @@ Compare at least 3 model families.
 
 ---
 
-### Phase 4: Inference & Drift Monitoring
+### Phase 5: Inference & Drift Monitoring
 
 **What it does:** Scores new data using the champion model, validates schema, and checks for data drift.
 
@@ -370,7 +393,7 @@ Include drift monitoring against the training distribution.
 
 ---
 
-### Phase 5: Review (Optional but Recommended)
+### Phase 6: Review (Optional but Recommended)
 
 **What it does:** Activates the Data Scientist Reviewer persona — a methodological gatekeeper who audits your entire pipeline.
 
@@ -396,6 +419,7 @@ Check for data leakage, statistical validity, and reproducibility.
 | Skill | Command | Description |
 |---|---|---|
 | EDA | `/eda` | Exploratory data analysis — profiling, distributions, correlations, hypothesis register |
+| Hypothesis Testing | `/hypothesis-testing` | Statistical tests with assumption checks, effect sizes, power analysis |
 | Feature Engineering | `/feature-engineering` | Build model-ready features from raw data |
 | Model Training | `/model-training` | Train, compare, and select champion model |
 | Inferencing | `/inferencing` | Score new data and monitor for drift |
@@ -434,10 +458,11 @@ business_goal: Predict which customers will churn in the next 30 days
 ### What happens
 
 1. **EDA** — Claude profiles the dataset, generates visualizations, and creates a hypothesis register
-2. **Feature Engineering** — Transforms are applied based on EDA findings, splits are created
-3. **Model Training** — Multiple models are trained, compared, and a champion is selected
-4. **Inferencing** — The champion model scores the data and drift monitoring is set up
-5. **Review** — A final quality gate checks the entire pipeline
+2. **Hypothesis Testing** — Statistical tests validate EDA findings with effect sizes and power analysis
+3. **Feature Engineering** — Transforms are applied based on EDA and hypothesis findings, splits are created
+4. **Model Training** — Multiple models are trained, compared, and a champion is selected
+5. **Inferencing** — The champion model scores the data and drift monitoring is set up
+6. **Review** — A final quality gate checks the entire pipeline
 
 ### Parameters
 
@@ -538,7 +563,7 @@ This project is in active development. Key planned additions:
 | Priority | What | Status |
 |---|---|---|
 | High | Problem framing playbook (`00_PROBLEM_FRAMING.md`) | Planned |
-| High | Hypothesis testing playbook (`03_HYPOTHESIS_TESTING.md`) | Planned |
+| High | Hypothesis testing playbook (`03_HYPOTHESIS_TESTING.md`) | **Done** |
 | High | Data contracts playbook (`01_DATA_CONTRACT.md`) | Planned |
 | Medium | Model evaluation playbook (`06_MODEL_EVALUATION.md`) | Planned |
 | Medium | Monitoring playbook (`08_MONITORING.md`) | Planned |

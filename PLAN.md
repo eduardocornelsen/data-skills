@@ -240,17 +240,17 @@ The `@path/to/file.md` reference keeps content single-sourced; SKILL.md is just 
 
 ## 9. Sequencing (independently mergeable steps)
 
-1. **Restructure** — create folders, move existing files, no content edits
-2. **Add submodule plumbing** — `README.md`, `.gitignore`, `LICENSE`, top-level `CLAUDE.md`
-3. **Write `03_HYPOTHESIS_TESTING.md`** — biggest gap, highest leverage
-4. **Write `00_PROBLEM_FRAMING.md` + `01_DATA_CONTRACT.md` + `01b_DATA_MODELING.md`** — unblock everything downstream
+1. ~~**Restructure** — create folders, move existing files, no content edits~~ **DONE**
+2. ~~**Add submodule plumbing** — `README.md`, `.gitignore`, `LICENSE`, top-level `CLAUDE.md`~~ **DONE**
+3. ~~**Write `03_HYPOTHESIS_TESTING.md`** — biggest gap, highest leverage~~ **DONE**
+4. **Write `00_PROBLEM_FRAMING.md` + `01_DATA_CONTRACT.md` + `01b_DATA_MODELING.md`** — unblock everything downstream ← **NEXT**
 5. **Author `analytics_engineer.md` persona + narrow `data_engineer.md`** scope
 6. **De-domain + enrich existing 4 playbooks** (EDA, FE, training, inferencing)
 7. **Write `06_MODEL_EVALUATION.md` + `08_MONITORING.md` + `09_EXPERIMENTATION.md`**
 8. **Build `premises/`, `checklists/`, `templates/`** by extracting from playbooks (deduplicate)
-9. **Wrap everything as Claude Code skills** under `.claude/skills/`
+9. ~~**Wrap everything as Claude Code skills** under `.claude/skills/`~~ **DONE** (initial wiring; new playbooks will be wired as they're created)
 10. **Author 1–2 `domain_accelerators/`** (start with `ad_click_prediction.md`, derived from current notebooks)
-11. **Move ad-click notebooks** to `examples/reference_implementations/ad_click/` *(done early at user request)*
+11. ~~**Move ad-click notebooks** to `examples/reference_implementations/ad_click/`~~ **DONE** *(done early at user request)*
 12. **Convert to git submodule** — extract `data-skills/` into its own repo, re-add as submodule
 
 Each step is a separate commit / PR.

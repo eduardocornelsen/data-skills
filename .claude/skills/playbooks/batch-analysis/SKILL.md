@@ -40,35 +40,50 @@ Before moving to Phase 2, confirm:
 - [ ] Hypothesis register is populated
 - [ ] EDA notebook runs end-to-end without errors
 
-### Phase 2: Feature Engineering
+### Phase 2: Hypothesis Testing
+
+Follow the playbook: @playbooks/03_HYPOTHESIS_TESTING.md
+
+**Inputs:** Hypothesis register from EDA, cleaned dataset.
+**Outputs:** `hypothesis_testing.ipynb`, `utils/hypothesis_helpers.py`, updated hypothesis register with verdicts.
+
+Before moving to Phase 3, confirm:
+- [ ] All hypotheses from the EDA register are tested
+- [ ] Premise checks (normality, variance, independence) run before each test
+- [ ] Effect sizes and confidence intervals reported for every test
+- [ ] Multiple testing correction applied
+- [ ] Practical significance assessed for every significant result
+- [ ] Hypothesis testing notebook runs end-to-end without errors
+
+### Phase 3: Feature Engineering
 
 Follow the playbook: @playbooks/04_FEATURE_ENGINEERING.md
 
-**Inputs:** EDA findings, cleaned dataset.
+**Inputs:** EDA findings, hypothesis test results, cleaned dataset.
 **Outputs:** `feature_engineering.ipynb`, `utils/fe_helpers.py`, train/val/test splits.
 
-Before moving to Phase 3, confirm:
+Before moving to Phase 4, confirm:
 - [ ] Features are derived from EDA findings
 - [ ] Encoding, scaling, and transformations are applied
 - [ ] Train/validation/test splits are created (70/15/15 default)
 - [ ] No data leakage across splits
 - [ ] Feature engineering notebook runs end-to-end without errors
 
-### Phase 3: Model Training
+### Phase 4: Model Training
 
 Follow the playbook: @playbooks/05_MODEL_TRAINING.md
 
 **Inputs:** Feature-engineered train/val/test splits.
 **Outputs:** `model_training.ipynb`, `utils/model_helpers.py`, champion model.
 
-Before moving to Phase 4, confirm:
+Before moving to Phase 5, confirm:
 - [ ] At least 3 candidate models are trained and compared
 - [ ] Hyperparameter tuning is performed
 - [ ] All runs are logged to MLflow (params, metrics, artifacts)
 - [ ] Champion model is selected with documented rationale
 - [ ] Model training notebook runs end-to-end without errors
 
-### Phase 4: Inferencing & Drift Monitoring
+### Phase 5: Inferencing & Drift Monitoring
 
 Follow the playbook: @playbooks/07_INFERENCING.md
 
@@ -82,11 +97,11 @@ Before moving to Review, confirm:
 - [ ] Drift monitoring compares scoring data to training distributions
 - [ ] Inferencing notebook runs end-to-end without errors
 
-### Phase 5: Pipeline Review (unless skip_review=true)
+### Phase 6: Pipeline Review (unless skip_review=true)
 
 Adopt the Data Scientist Reviewer persona: @personas/data_scientist_reviewer.md
 
-Review all four notebooks for:
+Review all five notebooks for:
 - Data leakage (target leaking into features, future data in training)
 - Train/test contamination (fitting on validation/test data)
 - Statistical validity (assumption checks, multiple-testing correction)
@@ -105,16 +120,18 @@ When complete, print a summary table:
 ```
 Pipeline Complete
 =================
-Phase              | Notebook                    | Status
--------------------|-----------------------------|--------
-EDA                | eda.ipynb                   | Done
-Feature Engineering| feature_engineering.ipynb    | Done
-Model Training     | model_training.ipynb        | Done
-Inferencing        | inferencing.ipynb           | Done
-Review             | (inline)                    | Done/Skipped
+Phase                | Notebook                    | Status
+---------------------|-----------------------------|--------
+EDA                  | eda.ipynb                   | Done
+Hypothesis Testing   | hypothesis_testing.ipynb    | Done
+Feature Engineering  | feature_engineering.ipynb    | Done
+Model Training       | model_training.ipynb        | Done
+Inferencing          | inferencing.ipynb           | Done
+Review               | (inline)                    | Done/Skipped
 
 Artifacts:
 - utils/eda_helpers.py
+- utils/hypothesis_helpers.py
 - utils/fe_helpers.py
 - utils/model_helpers.py
 - Champion model: [model name]
