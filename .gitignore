@@ -1,2 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
 
-.databricks
+# Virtual envs
+.env
+.venv/
+venv/
+env/
+
+# MLflow
+mlruns/
+mlartifacts/
+mlflow.db
+mlflow.db-journal
+
+# Databricks
+.databricks/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# OS
+Thumbs.db
