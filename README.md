@@ -90,13 +90,16 @@ Step-by-step instructions that Claude follows to produce notebooks, code, and ar
 
 | Playbook | What it does |
 |---|---|
+| `00_PROBLEM_FRAMING.md` | Problem framing — business question, KPI, baseline, cost asymmetry, stakeholder map, scope |
+| `01_DATA_CONTRACT.md` | Data contracts — schema validation, freshness SLA, PII flags, value ranges, drift tolerance |
+| `01b_DATA_MODELING.md` | Dimensional modeling — star/snowflake schemas, SCD types, marts, data quality tests, semantic layer |
 | `02_EDA.md` | Exploratory data analysis — profiling, distributions, correlations, hypothesis register |
 | `03_HYPOTHESIS_TESTING.md` | Rigorous statistical tests — assumption checks, effect sizes, power analysis, multiple-testing correction |
 | `04_FEATURE_ENGINEERING.md` | Transform raw data into model-ready features — encoding, scaling, temporal features, text features |
 | `05_MODEL_TRAINING.md` | Train and compare candidate models — hyperparameter tuning, MLflow tracking, champion selection |
 | `07_INFERENCING.md` | Score new data in production — schema validation, feature pipelines, drift monitoring |
 
-> More playbooks are planned: problem framing, data contracts, model evaluation, monitoring, and experimentation. See [PLAN.md](./PLAN.md).
+> More playbooks are planned: model evaluation, monitoring, and experimentation. See [PLAN.md](./PLAN.md).
 
 ### Personas — *Who* does the work
 
@@ -105,6 +108,7 @@ Role-specific system prompts that set Claude's tone, focus areas, and quality ga
 | Persona | Role |
 |---|---|
 | `data_analyst` | EDA and business intelligence — thinks in SQL and story |
+| `analytics_engineer` | Dimensional modeling, semantic layer, marts, data quality testing |
 | `data_engineer` | Pipeline architecture, data quality, infrastructure |
 | `ml_engineer` | MLOps, model deployment, monitoring, CI/CD for ML |
 | `data_scientist_reviewer` | Statistical rigor gatekeeper — the last quality gate |
@@ -132,6 +136,9 @@ data-skills/
 ├── .claude/
 │   └── skills/                        # Claude Code skill definitions (invocable via /slash commands)
 │       ├── playbooks/
+│       │   ├── problem-framing/SKILL.md        # /problem-framing — scope the problem
+│       │   ├── data-contract/SKILL.md         # /data-contract — validate data quality
+│       │   ├── data-modeling/SKILL.md         # /data-modeling — dimensional modeling
 │       │   ├── eda/SKILL.md                    # /eda — run exploratory data analysis
 │       │   ├── hypothesis-testing/SKILL.md    # /hypothesis-testing — statistical tests
 │       │   ├── feature-engineering/SKILL.md    # /feature-engineering — build features
@@ -139,6 +146,7 @@ data-skills/
 │       │   ├── inferencing/SKILL.md            # /inferencing — score new data
 │       │   └── batch-analysis/SKILL.md         # /batch-analysis — run full pipeline
 │       └── personas/
+│           ├── persona-analytics-engineer/SKILL.md
 │           ├── persona-data-analyst/SKILL.md
 │           ├── persona-data-engineer/SKILL.md
 │           ├── persona-data-scientist-reviewer/SKILL.md
@@ -149,6 +157,9 @@ data-skills/
 │           └── persona-qa-tester/SKILL.md
 │
 ├── playbooks/                         # Canonical playbook content (skills reference these)
+│   ├── 00_PROBLEM_FRAMING.md          #   Business problem framing
+│   ├── 01_DATA_CONTRACT.md            #   Data contract validation
+│   ├── 01b_DATA_MODELING.md           #   Dimensional modeling & marts
 │   ├── 02_EDA.md                      #   Exploratory data analysis
 │   ├── 03_HYPOTHESIS_TESTING.md       #   Statistical hypothesis testing
 │   ├── 04_FEATURE_ENGINEERING.md      #   Feature engineering
@@ -157,6 +168,7 @@ data-skills/
 │
 ├── personas/                          # Canonical persona content (skills reference these)
 │   ├── _template.md                   #   Meta-template for creating new personas
+│   ├── analytics_engineer.md
 │   ├── data_analyst.md
 │   ├── data_engineer.md
 │   ├── data_scientist_reviewer.md
@@ -165,6 +177,9 @@ data-skills/
 │   ├── ux_researcher.md
 │   ├── frontend_developer.md
 │   └── qa_tester.md
+│
+├── templates/                         # Copy-paste scaffolds (playbooks fill these in)
+│   └── problem_statement.md           #   Problem framing output template
 │
 ├── examples/
 │   └── reference_implementations/
@@ -418,6 +433,9 @@ Check for data leakage, statistical validity, and reproducibility.
 
 | Skill | Command | Description |
 |---|---|---|
+| Problem Framing | `/problem-framing` | Frame a business question into a scoped problem statement |
+| Data Contract | `/data-contract` | Validate schema, freshness, PII, and quality guarantees |
+| Data Modeling | `/data-modeling` | Design dimensional models with staging, intermediate, and marts |
 | EDA | `/eda` | Exploratory data analysis — profiling, distributions, correlations, hypothesis register |
 | Hypothesis Testing | `/hypothesis-testing` | Statistical tests with assumption checks, effect sizes, power analysis |
 | Feature Engineering | `/feature-engineering` | Build model-ready features from raw data |
@@ -429,6 +447,7 @@ Check for data leakage, statistical validity, and reproducibility.
 
 | Skill | Command | Description |
 |---|---|---|
+| Analytics Engineer | `/persona-analytics-engineer` | Dimensional modeling, semantic layer, data quality tests |
 | Data Analyst | `/persona-data-analyst` | EDA and business intelligence — thinks in SQL and story |
 | Data Engineer | `/persona-data-engineer` | Pipeline architecture, data quality, infrastructure |
 | ML Engineer | `/persona-ml-engineer` | MLOps, model deployment, monitoring |
@@ -562,13 +581,14 @@ This project is in active development. Key planned additions:
 
 | Priority | What | Status |
 |---|---|---|
-| High | Problem framing playbook (`00_PROBLEM_FRAMING.md`) | Planned |
+| High | Problem framing playbook (`00_PROBLEM_FRAMING.md`) | **Done** |
 | High | Hypothesis testing playbook (`03_HYPOTHESIS_TESTING.md`) | **Done** |
-| High | Data contracts playbook (`01_DATA_CONTRACT.md`) | Planned |
+| High | Data contracts playbook (`01_DATA_CONTRACT.md`) | **Done** |
+| High | Data modeling playbook (`01b_DATA_MODELING.md`) | **Done** |
+| High | Analytics engineer persona | **Done** |
 | Medium | Model evaluation playbook (`06_MODEL_EVALUATION.md`) | Planned |
 | Medium | Monitoring playbook (`08_MONITORING.md`) | Planned |
 | Medium | Experimentation / A-B testing playbook (`09_EXPERIMENTATION.md`) | Planned |
-| Medium | Analytics engineer persona | Planned |
 | Medium | Premises, checklists, and templates | Planned |
 | Low | Domain accelerators (churn, forecasting, fraud, recommenders) | Planned |
 
