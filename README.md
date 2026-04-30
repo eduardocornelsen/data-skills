@@ -1,10 +1,62 @@
-![data-skills](assets/logo_final.png)
+<p align="center">
+  <img src="assets/logo_final.png" alt="data-skills logo" width="180"/>
+</p>
 
-# data-skills
+<p align="center">
+  <strong>AI can write notebooks. data-skills makes them production-grade.</strong>
+</p>
 
-**Turn Claude Code into a senior data science team.** A composable skill library of playbooks, personas, and best-practice guardrails that guide Claude through every phase of a data science project — from problem framing to production monitoring.
+<p align="center">
+  Turn Claude Code into a senior data science team — with playbooks, personas,<br/>
+  and guardrails for every phase of a DS project.
+</p>
 
-No coding experience required. You talk to Claude in plain English; it follows the playbooks and adopts the right persona for each task.
+<p align="center">
+  <a href="#quick-start--run-a-full-pipeline-in-one-command">Quick Start</a> ·
+  <a href="#skill-reference">Skills</a> ·
+  <a href="#personas-your-virtual-ds-team">Personas</a> ·
+  <a href="#reference-implementation">Examples</a>
+</p>
+
+---
+
+## The Problem
+
+You ask Claude to analyze a dataset. It writes a notebook. That notebook:
+
+- Skips assumption checks before running statistical tests
+- Leaks target information into features
+- Trains one model with no comparison baseline
+- Has no experiment tracking
+- Can't be reproduced by anyone else
+
+Not because Claude is bad. Because Claude has no structure to follow.
+
+---
+
+## The Solution
+
+`data-skills` gives Claude that structure.
+
+It installs a library of **playbooks**, **personas**, and **guardrails** directly into Claude Code. Claude reads them. Claude follows them. You get senior-quality output.
+
+| Without `data-skills` | With `data-skills` |
+|---|---|
+| One notebook, no structure | Phase-by-phase notebooks with clear outputs |
+| No assumption checks | Full statistical diagnostics before every test |
+| No experiment tracking | Every run logged to MLflow automatically |
+| Data leakage goes undetected | Reviewer persona audits the full pipeline |
+| Inconsistent quality | Same playbook, every time |
+
+No coding experience required. You talk to Claude in plain English. It follows the playbooks and adopts the right persona for each task.
+
+---
+
+## See It in Action
+
+> Demo GIF coming soon — see the [reference implementation](#reference-implementation) for a full walkthrough.
+
+*One command. Full pipeline. Structured outputs. Reproducible artifacts.*
 
 ---
 
