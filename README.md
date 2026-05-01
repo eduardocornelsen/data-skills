@@ -674,4 +674,21 @@ Add it as a git submodule (see [Setup Guide](#step-1-get-the-repository)). Claud
 
 MIT — see [LICENSE](./LICENSE).
 
-Copyright (c) 2026 Eduardo Cornelsen
+---
+<p align="center">
+  <sub>
+    Built with ☕ by <strong><a href="https://eduardocornelsen.com">Eduardo Cornelsen</a></strong>
+  </sub>
+  <br/>
+  <sub>
+    <a href="https://eduardocornelsen.com">Portfolio</a> · <a href="https://www.linkedin.com/in/eduardo-cornelsen/">LinkedIn</a>
+  </sub>
+  <br/>
+  <sub>
+    Creator of <strong>data-skills</strong> — an AI-native data science framework for Claude Code.
+  </sub>
+  <br/>
+  <sub>
+    Revenue Operations · Data Engineering · AI/ML · Full-Stack Development
+  </sub>
+</p>
