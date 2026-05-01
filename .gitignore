@@ -33,3 +33,8 @@ NEXT_STEP.md
 make_transparent.py
 
 logo_full.png
+
+.docs
+
+*.local.json
+.claude/settings.local.json
