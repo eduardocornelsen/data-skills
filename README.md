@@ -318,7 +318,7 @@ The reference implementation runs on Databricks Serverless with PySpark and Delt
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/claude-code-data-science.git
+git clone https://github.com/eduardocornelsen/data-skills.git
 
 # Navigate into it
 cd claude-code-data-science
@@ -327,7 +327,7 @@ cd claude-code-data-science
 Or, to add as a submodule to an existing project:
 
 ```bash
-git submodule add https://github.com/your-username/claude-code-data-science.git data-skills
+git submodule add https://github.com/eduardocornelsen/data-skills.git data-skills
 git submodule update --init --recursive
 ```
 
