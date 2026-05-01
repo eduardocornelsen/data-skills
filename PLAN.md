@@ -1,8 +1,8 @@
 # `data-skills` — Repo Plan
 
-> Status: planning
+> Status: active
 > Owner: Eduardo Cornelsen
-> Last updated: 2026-04-30
+> Last updated: 2026-05-01
 
 ## 1. Purpose
 
@@ -55,7 +55,9 @@ data-skills/
 │       │   ├── model-evaluation/SKILL.md
 │       │   ├── inferencing/SKILL.md
 │       │   ├── monitoring/SKILL.md
-│       │   └── experimentation/SKILL.md
+│       │   ├── experimentation/SKILL.md
+│       │   ├── stakeholder-communication/SKILL.md
+│       │   └── batch-analysis/SKILL.md
 │       └── personas/
 │           ├── persona-data-scientist-reviewer/SKILL.md
 │           ├── persona-data-analyst/SKILL.md
@@ -78,7 +80,8 @@ data-skills/
 │   ├── 06_MODEL_EVALUATION.md            # NEW — calibration, fairness, error analysis
 │   ├── 07_INFERENCING.md                 # existing, expanded + de-domained
 │   ├── 08_MONITORING.md                  # NEW — drift, decay, retraining triggers
-│   └── 09_EXPERIMENTATION.md             # NEW — A/B design, power, MDE, CUPED
+│   ├── 09_EXPERIMENTATION.md             # NEW — A/B design, power, MDE, CUPED
+│   └── 10_STAKEHOLDER_COMMUNICATION.md   # NEW — business translation, SCR narrative, impact quantification
 │
 ├── personas/                              # canonical content
 │   ├── _template.md                      # the architet.md meta-template
@@ -246,9 +249,9 @@ The `@path/to/file.md` reference keeps content single-sourced; SKILL.md is just 
 4. ~~**Write `00_PROBLEM_FRAMING.md` + `01_DATA_CONTRACT.md` + `01b_DATA_MODELING.md`**~~ **DONE** — also created `templates/problem_statement.md`
 5. ~~**Author `analytics_engineer.md` persona**~~ **DONE** + **narrow `data_engineer.md` scope** — deferred to step 6
 6. ~~**De-domain + enrich existing 4 playbooks** (EDA, FE, training, inferencing)~~ **DONE**
-7. **Write `06_MODEL_EVALUATION.md` + `08_MONITORING.md` + `09_EXPERIMENTATION.md`** ← **NEXT**
-8. **Build `premises/`, `checklists/`, `templates/`** by extracting from playbooks (deduplicate)
-9. ~~**Wrap everything as Claude Code skills** under `.claude/skills/`~~ **DONE** (initial wiring; new playbooks will be wired as they're created)
+7. ~~**Write `06_MODEL_EVALUATION.md` + `08_MONITORING.md` + `09_EXPERIMENTATION.md` + `10_STAKEHOLDER_COMMUNICATION.md`**~~ **DONE** — all 4 playbooks written + wired as Claude Code skills + batch pipeline updated to 9 phases
+8. **Build `premises/`, `checklists/`, `templates/`** by extracting from playbooks (deduplicate) ← **NEXT**
+9. ~~**Wrap everything as Claude Code skills** under `.claude/skills/`~~ **DONE** (26 SKILL.md files: 13 playbook + 9 persona + batch-analysis + 3 new playbooks)
 10. **Author 1–2 `domain_accelerators/`** (start with `ad_click_prediction.md`, derived from current notebooks)
 11. ~~**Move ad-click notebooks** to `examples/reference_implementations/ad_click/`~~ **DONE** *(done early at user request)*
 12. **Convert to git submodule** — extract `data-skills/` into its own repo, re-add as submodule
